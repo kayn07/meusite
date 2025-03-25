@@ -1,0 +1,43 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar-brand img {
+    height: 50px; /* Ajuste conforme necessário */
+    width: auto;
+    margin-right: 10px;
+}
+
+.content {
+    flex: 1; /* Faz o conteúdo expandir e empurrar o footer para baixo */
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.footer {
+    background: #343a40;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+/*                     */
+.btn-carrinho {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-carrinho:hover {
+    background-color: #218838;
+}
+
