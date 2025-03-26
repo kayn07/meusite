@@ -63,11 +63,16 @@
                 </div>
                 <?php endforeach; ?>
 
-            </div>
-            
+            </div>  
         </div>
     </div>
 
+    <div class="container- my-3">
+        <div class="content row">
+            <div class="col-6">aa</div>
+            <div class="col-6">aaa</div>
+        </div>
+    </div>
     <!-- Footer -->
     <?php include_once "footer.php"; ?>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
