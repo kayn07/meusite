@@ -85,24 +85,24 @@ function listarCategorias() {
 }
 function ListarProdutosDetalhes($id) {
     $mysqli = conectar();
-    $stmt = $mysqli->prepare("
-    SELECT 
-    p.id AS produto_id,
-    p.nome AS produto_nome,
-    p.descricao AS produto_descricao,
-    p.preco AS produto_preco,
-    c.nome AS categoria_nome,
-    i.link AS imagem_link
+    $stmt = $mysqli->prepare("SELECT 
+        p.id AS produto_id,
+        p.nome AS produto_nome,
+        p.descricao AS produto_descricao,
+        p.preco AS produto_preco,
+        c.nome AS categoria_nome,
+        i.link AS imagem_link
     FROM tb_produtos p
-    LEFT JOIN tb_categorias c 
-    ON p.id_categoria = c.id
-    LEFT JOIN tb_imagens i 
-    ON p.id = i.id_produto
+    LEFT JOIN tb_categorias c ON p.id_categoria = c.id
+    LEFT JOIN tb_imagens i ON p.id = i.id_produto
     WHERE p.id = ?");
-    $stmt->bind_param("i", $id);    
-    $stmt->execute();   
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $produtos = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
     $mysqli->close();
+    return $produtos;
 }
 function listarProdutosIndex() {
     $mysqli = conectar();
@@ -164,6 +164,20 @@ function listarProdutos() {
     }
     $mysqli->close();
     return $categorias;
+}
+function listarProdutosIndexCategoria($categoria) {
+    $mysqli = conectar();
+    $stmt = $mysqli->prepare("SELECT
+    p.id AS produto_id,
+    p.nome AS produto_nome,
+    p.descricao AS produto_descricao,
+    p.preco AS produto_preco,
+    c.nome AS categoria_nome,
+    i.link AS imagem_link
+    FROM tb_produtos p
+    LEFT JOIN tb_categorias c ON p.id_categoria = c.id
+    LEFT JOIN tb_imagens i ON p.id = i.id_produto
+    WHERE c.id = ?;");
 }
 
 ?>

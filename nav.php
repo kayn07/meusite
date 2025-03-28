@@ -10,9 +10,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <a href="carrinho.php" class="btn-carrinho">
-    🛒 Carrinho
-</a>
+        <a href="carrinho.php" class="btn-carrinho">🛒 Carrinho</a>
 
 
         <!-- Itens do menu -->

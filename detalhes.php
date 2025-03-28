@@ -16,7 +16,6 @@
     <title>Guitarpy</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="shortcut icon" type="logo" href="logo.png"> <!--icone no canto da tela-->
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -48,31 +47,27 @@
     <div class="container my-3">
         <div class="content">            
 
-            <div class="row">
-                
-                
-                <?php foreach ($produtos as $produto): ?>
-                <div class="col-lg-6" style="background-color: red;">
-                    <img src="">
+        <div class="row align-items-stretch">
+            <?php foreach ($produtos as $produto): ?>
+                <div class="col-6" style="display: flex;">
+                    <img src="<?= $produto['imagem_link'] ?>" class="w-100 rounded-3" alt="Imagem do produto">
                 </div>
-                <div class="col-lg-6" style="background-color: blue;">
-                    <h3>Título: <?= $produto['nome']; ?></h3>
-                    <p>Categoria: </p>
-                    <p>Descrição: </p>
-                    <h3>Valor: </h3>
+                <div class="card shadow col-6 d-flex flex-column justify-content-center">
+                    <h3>Nome: <?= $produto['produto_nome'] ?></h3>
+                    <p>Categoria: <?= $produto['categoria_nome'] ?></p>
+                    <h3>Preço: <?= number_format($produto['produto_preco'], 2, ',', '.') ?></h3>
+                    <p>Descrição: <?= nl2br(htmlspecialchars($produto['produto_descricao'])) ?></p>
+                    <a href="detalhes.php?id=<?= $produto['produto_id']; ?>" class="btn btn-primary w-100">
+                        <i class="fas fa-shopping-cart"></i> Comprar
+                    </a>
                 </div>
-                <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
 
-            </div>  
+            
         </div>
     </div>
 
-    <div class="container- my-3">
-        <div class="content row">
-            <div class="col-6">aa</div>
-            <div class="col-6">aaa</div>
-        </div>
-    </div>
     <!-- Footer -->
     <?php include_once "footer.php"; ?>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

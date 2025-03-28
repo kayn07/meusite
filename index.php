@@ -1,6 +1,12 @@
 <?php
     require_once 'banco.php';
+    $id_cat = $_GET ['cat'] ?? null; 
+    if ($id_cat) {
+        $produtos = listarProdutosIndexCategoria($id_cat);
+    } else {
     $produtos = listarProdutosIndex();
+    }
+    $categorias = listarCategorias();
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +30,16 @@
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="aaa.webp" class="d-block w-100" alt="Banner 1">
+                <img src="img/banner/1.png" class="d-block w-100" alt="Banner 1">
             </div>
             <div class="carousel-item">
-                <img src="img/s2.png" class="d-block w-100" alt="Banner 2">
+                <img src="img/banner/2.png" class="d-block w-100" alt="Banner 2">
             </div>
             <div class="carousel-item">
-                <img src="img/s3.png" class="d-block w-100" alt="Banner 2">
+                <img src="img/banner/3.png" class="d-block w-100" alt="Banner 2">
+            </div>
+            <div class="carousel-item">
+                <img src="img/banner/4.png" class="d-block w-100" alt="Banner 2">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -45,6 +54,12 @@
 
     <div class="container my-3">
         <div class="content">            
+
+        <div class="col-12 mb-4">
+            <?php foreach ($categorias as $categoria): ?>
+                <a href="index.php?cat=<?= $categoria['id']; ?>" class="btn btn-primary"><?= $categoria['nome']; ?></a>
+                <?php endforeach; ?>
+        </div>
 
             <!-- Cards de Produtos -->
             <div class="row">
